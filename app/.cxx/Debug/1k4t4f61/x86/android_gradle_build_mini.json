@@ -1,0 +1,27 @@
+{
+  "buildFiles": [
+    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/1k4t4f61/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/1k4t4f61/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "raceboat::@6890427a1f51a3e7e1df": {
+      "artifactName": "raceboat",
+      "abi": "x86",
+      "output": "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/1k4t4f61/obj/x86/libraceboat.so",
+      "runtimeFiles": []
+    }
+  }
+}

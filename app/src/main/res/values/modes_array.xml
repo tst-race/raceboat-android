@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="modes_array">
+        <item>SEND_ONESHOT</item>
+        <item>SEND_RECV</item>
+        <item>CLIENT_CONNECT</item>
+        <item>RECV_ONESHOT</item>
+        <item>RECV_RESPOND</item>
+        <item>SERVER_CONNECT</item>
+    </string-array>
+</resources>

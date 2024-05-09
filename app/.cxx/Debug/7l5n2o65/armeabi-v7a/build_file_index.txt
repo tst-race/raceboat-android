@@ -1,0 +1,4 @@
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/CMakeLists.txt
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims/CMakeLists.txt
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims/source/CMakeLists.txt
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/CMakeLists.txt

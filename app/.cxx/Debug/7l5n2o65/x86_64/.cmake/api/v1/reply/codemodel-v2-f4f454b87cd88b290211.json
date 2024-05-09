@@ -1,0 +1,141 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						3
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-088fe0f7e767b9ef41c9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "language-shims",
+					"childIndexes" : 
+					[
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-language-shims-Debug-c694847f1f903f705745.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "language-shims"
+				},
+				{
+					"build" : "language-shims/source",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-language-shims.source-Debug-9b0943fb6948431e2a8e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "language-shims/source",
+					"targetIndexes" : 
+					[
+						0,
+						3
+					]
+				},
+				{
+					"build" : "source",
+					"jsonFile" : "directory-source-Debug-5b5a50b02d94cdb5eb2c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.6.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "source",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"name" : "raceboat",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "commsPluginBindings::@eb95eac4ca0b144f1c80",
+					"jsonFile" : "target-commsPluginBindings-Debug-396725e67a1cb00df11d.json",
+					"name" : "commsPluginBindings",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "raceboat::@411ffd8adc737496fe19",
+					"jsonFile" : "target-raceboat-Debug-8a6ebb3d77f71b1ecf08.json",
+					"name" : "raceboat",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "run_raceboat::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-run_raceboat-Debug-031627835b854f2245bf.json",
+					"name" : "run_raceboat",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "swigpyrunHeader::@eb95eac4ca0b144f1c80",
+					"jsonFile" : "target-swigpyrunHeader-Debug-bdbca23367a122c10bef.json",
+					"name" : "swigpyrunHeader",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86_64",
+		"source" : "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

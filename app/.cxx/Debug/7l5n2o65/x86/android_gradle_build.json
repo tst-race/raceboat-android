@@ -1,0 +1,59 @@
+{
+  "buildFiles": [
+    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/CMakeLists.txt",
+    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims/CMakeLists.txt",
+    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims/source/CMakeLists.txt",
+    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "commsPluginBindings::@eb95eac4ca0b144f1c80": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "commsPluginBindings",
+      "output": "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/7l5n2o65/obj/x86/_commsPluginBindings.so",
+      "runtimeFiles": [
+        "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so",
+        "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/7l5n2o65/obj/x86/libraceboat.so"
+      ]
+    },
+    "raceboat::@411ffd8adc737496fe19": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "raceboat",
+      "output": "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/7l5n2o65/obj/x86/libraceboat.so",
+      "runtimeFiles": [
+        "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so"
+      ]
+    },
+    "swigpyrunHeader::@eb95eac4ca0b144f1c80": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "swigpyrunHeader"
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cxx",
+    "cpp"
+  ]
+}

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/1k4t4f61/arm64-v8a",
+  "command": "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=aarch64-none-linux-android33 --sysroot=/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Draceboat_EXPORTS -I/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/../include -I/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/../includes -I/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/../source -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -fno-limit-debug-info  -fPIC -o CMakeFiles/raceboat.dir/mainDriver.cpp.o -c /Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/mainDriver.cpp",
+  "file": "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/mainDriver.cpp"
+}
+]

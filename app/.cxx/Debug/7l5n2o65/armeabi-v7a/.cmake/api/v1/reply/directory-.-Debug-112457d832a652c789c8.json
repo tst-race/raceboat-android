@@ -1,0 +1,121 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 84,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 92,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/7l5n2o65/obj/armeabi-v7a/libraceboat.so"
+			],
+			"targetId" : "raceboat::@411ffd8adc737496fe19",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"source/../include/ClrMsg.h",
+				"source/../include/IRaceApp.h",
+				"source/../include/MessageStatus.h",
+				"source/../include/PluginStatus.h",
+				"source/../include/race/Race.h",
+				"source/../include/race/common/ChannelId.h",
+				"source/../include/race/common/ChannelProperties.h",
+				"source/../include/race/common/ChannelRole.h",
+				"source/../include/race/common/ChannelStatus.h",
+				"source/../include/race/common/ConnectionStatus.h",
+				"source/../include/race/common/ConnectionType.h",
+				"source/../include/race/common/Defer.h",
+				"source/../include/race/common/EncPkg.h",
+				"source/../include/race/common/LinkProperties.h",
+				"source/../include/race/common/LinkPropertyPair.h",
+				"source/../include/race/common/LinkPropertySet.h",
+				"source/../include/race/common/LinkStatus.h",
+				"source/../include/race/common/LinkType.h",
+				"source/../include/race/common/PackageStatus.h",
+				"source/../include/race/common/PackageType.h",
+				"source/../include/race/common/PluginConfig.h",
+				"source/../include/race/common/PluginResponse.h",
+				"source/../include/race/common/RaceEnums.h",
+				"source/../include/race/common/RaceExport.h",
+				"source/../include/race/common/RaceHandle.h",
+				"source/../include/race/common/RaceLog.h",
+				"source/../include/race/common/RacePluginExports.h",
+				"source/../include/race/common/SendType.h",
+				"source/../include/race/common/TransmissionType.h",
+				"source/../include/race/common/constants.h",
+				"source/../include/race/decomposed/ComponentTypes.h",
+				"source/../include/race/decomposed/IComponentBase.h",
+				"source/../include/race/decomposed/IComponentSdkBase.h",
+				"source/../include/race/decomposed/IEncodingComponent.h",
+				"source/../include/race/decomposed/IEncodingSdk.h",
+				"source/../include/race/decomposed/ITransportComponent.h",
+				"source/../include/race/decomposed/ITransportSdk.h",
+				"source/../include/race/decomposed/IUserModelComponent.h",
+				"source/../include/race/decomposed/IUserModelSdk.h",
+				"source/../include/race/unified/IRacePluginComms.h",
+				"source/../include/race/unified/IRaceSdkCommon.h",
+				"source/../include/race/unified/IRaceSdkComms.h",
+				"source/../include/race/unified/SdkResponse.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake",
+			"exportName" : "raceboat",
+			"exportTargets" : 
+			[
+				{
+					"id" : "raceboat::@411ffd8adc737496fe19",
+					"index" : 1
+				}
+			],
+			"paths" : 
+			[
+				"CMakeFiles/Export/lib/cmake/raceboat.cmake"
+			],
+			"type" : "export"
+		}
+	],
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	}
+}

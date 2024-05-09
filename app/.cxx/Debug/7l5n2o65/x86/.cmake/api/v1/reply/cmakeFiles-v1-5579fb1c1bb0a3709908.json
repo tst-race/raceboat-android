@@ -1,0 +1,202 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86/CMakeFiles/3.22.1-g37088a8/CMakeSystem.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/build/cmake/android.toolchain.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/build/cmake/android-legacy.toolchain.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/build/cmake/platforms.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Platform/Android-Initialize.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/build/cmake/hooks/pre/Android-Initialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86/CMakeFiles/3.22.1-g37088a8/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Platform/Android.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/build/cmake/hooks/pre/Android.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Compiler/Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Platform/Android-Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/Platform/Android-Clang.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/build/cmake/hooks/pre/Android-Clang.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/build/cmake/flags.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/FindPythonLibs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/CMakeFindFrameworks.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/SelectLibraryConfigurations.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"path" : "run_raceboat.cmake"
+		},
+		{
+			"path" : "language-shims/CMakeLists.txt"
+		},
+		{
+			"path" : "language-shims/source/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/FindSWIG.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/share/cmake-3.22/Modules/UseSWIG.cmake"
+		},
+		{
+			"path" : "source/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86",
+		"source" : "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

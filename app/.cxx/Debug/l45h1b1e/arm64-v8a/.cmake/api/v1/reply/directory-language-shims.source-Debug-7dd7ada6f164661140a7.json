@@ -1,0 +1,61 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"language-shims/source/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 190,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 194,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib/python",
+			"paths" : 
+			[
+				"/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/_commsPluginBindings.so"
+			],
+			"targetId" : "commsPluginBindings::@eb95eac4ca0b144f1c80",
+			"targetIndex" : 0,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib/python",
+			"paths" : 
+			[
+				"/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/language-shims/source/commsPluginBindings.py"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "language-shims/source",
+		"source" : "language-shims/source"
+	}
+}

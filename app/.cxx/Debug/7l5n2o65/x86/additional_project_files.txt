@@ -1,0 +1,5 @@
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86/language-shims/source/commsPluginBindings.py
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims/source/commsPluginBindings.i
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86/language-shims/source/CMakeFiles/swigpyrunHeader
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86/language-shims/source/CMakeFiles/swigpyrunHeader.rule
+/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/7l5n2o65/x86/language-shims/source/include/swigpyrun.h.rule
