@@ -195,6 +195,7 @@ static std::optional<RaceboatOptions> parseOpts(){
     //keep these around for later
     //opts.mode = static_cast<Mode>(mode);
     //opts.log_level = static_cast<RaceLog::LogLevel>(log_level);
+    return {opts};
 }
 
 //take channel options and move them into a channel parameter key-val map
@@ -587,7 +588,7 @@ int handle_server_connect(const RaceboatOptions &opts, int javaClientSocket) {
 
 int main(){
 
-    __android_log_print(ANDROID_LOG_ERROR, "MainDriver", "main called");
+    __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "MAIN CALLED");
     //might need to make some adjustments to return values so that failures and successes match what's expected
     auto opts = parseOpts();
     //artifact of optional type usage, removed currently
@@ -595,13 +596,17 @@ int main(){
     //    return 1;
     //}
 
+    __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "opts gotten");
     RaceLog::setLogLevel(opts->log_level);
     int result = -1;
 
     //passing true to this getSocketPath() will also do the prepend "\0" bug fix
     std::string socketPath = getSocketPath();
+    __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "socketPath %s",
+                        socketPath.c_str());
 
     int serverSocket = createServerSocket(socketPath);
+    __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "socket %d", serverSocket);
     if (serverSocket == -1) {
         return 1;
     }
@@ -609,6 +614,7 @@ int main(){
     bool trigger = true;
 
     while (trigger) {
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "in accept loop");
 
         int clientSocket = acceptClientConnection(serverSocket);
 

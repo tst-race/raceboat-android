@@ -31,7 +31,7 @@ target_include_directories(unitTestPythonBindings SYSTEM PUBLIC
 
 target_compile_definitions(unitTestPythonBindings
     PUBLIC PLUGIN_PATH="${CMAKE_CURRENT_SOURCE_DIR}/"
-    PYTHON_PLUGIN_SUPPORT=1
+    PYTHON_PLUGIN_SUPPORT=0
 )
 
 # Link external dependencies

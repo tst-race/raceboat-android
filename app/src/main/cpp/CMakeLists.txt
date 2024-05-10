@@ -46,33 +46,33 @@ find_library( # Sets the name of the path variable.
 #setup_project_test_targets(raceboat UNIT INTEGRATION)
 #setup_project_format_targets(raceboat)
 # Set the path to Python include directory
-set(PYTHON_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include/python3.7m)
+# set(PYTHON_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include/python3.7m)
 
 # Set the path to Python library directory
-set(PYTHON_LIBRARY ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so)
+# set(PYTHON_LIBRARY ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so)
 
 # Set the path to Python executable directory
-set(PYTHON_EXECUTABLE ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/bin/python3.7m)
+# set(PYTHON_EXECUTABLE ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/bin/python3.7m)
 
 # Set the path to the Python packages
-set(PYTHON_PACKAGES_DIR "${CMAKE_SOURCE_DIR}/../python/python-packages-3.7.16-3-android-arm64-v8a")
-set(PYTHONPATH "${PYTHON_PACKAGES_DIR}:${PYTHONPATH}")
+# set(PYTHON_PACKAGES_DIR "${CMAKE_SOURCE_DIR}/../python/python-packages-3.7.16-3-android-arm64-v8a")
+# set(PYTHONPATH "${PYTHON_PACKAGES_DIR}:${PYTHONPATH}")
 
 # Find Python libraries
-find_package(PythonLibs 3.7.16 EXACT REQUIRED)
+# find_package(PythonLibs 3.7.16 EXACT REQUIRED)
 
-if (PythonLibs_FOUND)
-    message(STATUS "Python 3 found: ${PythonLibs_VERSION}")
-    message(STATUS "Include directories: ${PythonLibs_INCLUDE_DIRS}")
-    message(STATUS "Libraries: ${PythonLibs_LIBRARIES}")
-    message(STATUS "Include directories: ${PYTHON_INCLUDE_DIRS}")
-    message(STATUS "Libraries: ${PYTHON_LIBRARIES}")
-else()
-    message(FATAL_ERROR "Python 3 not found")
-endif()
+# if (PythonLibs_FOUND)
+#     message(STATUS "Python 3 found: ${PythonLibs_VERSION}")
+#     message(STATUS "Include directories: ${PythonLibs_INCLUDE_DIRS}")
+#     message(STATUS "Libraries: ${PythonLibs_LIBRARIES}")
+#     message(STATUS "Include directories: ${PYTHON_INCLUDE_DIRS}")
+#     message(STATUS "Libraries: ${PYTHON_LIBRARIES}")
+# else()
+#     message(FATAL_ERROR "Python 3 not found")
+# endif()
 
 
-add_subdirectory(language-shims)
+# add_subdirectory(language-shims)
 add_subdirectory(source)
 #if(NOT ANDROID)
 #    add_subdirectory(app/race-cli)

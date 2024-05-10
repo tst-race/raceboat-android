@@ -23,7 +23,7 @@
 #include "PluginContainer.h"
 #include "PluginDef.h"
 #include "PluginLoader.h"
-#include "PythonComponentPlugin.h"
+// #include "PythonComponentPlugin.h"
 #include "race/common/RaceEnums.h"
 
 namespace Raceboat {

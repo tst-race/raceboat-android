@@ -56,9 +56,9 @@ add_library(raceboat SHARED
     plugin-loading/DynamicLibrary.cpp
     plugin-loading/LoaderWrapper.cpp
     plugin-loading/PluginLoader.cpp
-    plugin-loading/PythonHelper.cpp
-    plugin-loading/PythonComponentPlugin.cpp
-    plugin-loading/PythonLoaderWrapper.cpp
+    # plugin-loading/PythonHelper.cpp
+    # plugin-loading/PythonComponentPlugin.cpp
+    # plugin-loading/PythonLoaderWrapper.cpp
     state-machine/ApiContext.cpp
     state-machine/ConnectionObjectStateMachine.cpp
     state-machine/ConnectionStateMachine.cpp
@@ -96,7 +96,7 @@ set_target_properties(raceboat PROPERTIES
 target_include_directories(raceboat PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include/python3.7m>
+        # $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include/python3.7m>
         $<INSTALL_INTERFACE:include>
 )
 
@@ -114,13 +114,13 @@ set_target_properties(raceboat PROPERTIES
 # Set the path to Python library
 #set(PYTHON_LIBRARY ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib)
 
-message(STATUS "In source/cmakeLists")
-message(STATUS "Checking include directory: ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include")
-message(STATUS "Checking library directory: ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib")
+# message(STATUS "In source/cmakeLists")
+# message(STATUS "Checking include directory: ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include")
+# message(STATUS "Checking library directory: ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib")
 
-#These should exist
-message(STATUS "Printing Python include dirs: ${PYTHON_INCLUDE_DIRS}")
-message(STATUS "Printing Python libraries: ${PYTHON_LIBRARIES}")
+# #These should exist
+# message(STATUS "Printing Python include dirs: ${PYTHON_INCLUDE_DIRS}")
+# message(STATUS "Printing Python libraries: ${PYTHON_LIBRARIES}")
 
 # Include PythonLibs
 #include_directories(PYTHON_INCLUDE_DIRS)
@@ -145,7 +145,7 @@ target_compile_definitions(raceboat PUBLIC SWIG_TYPE_TABLE=RaceSdk)
 #target_link_libraries(raceboat ${PYTHON_LIBRARIES_PATH})
 
 #changing the PYTHON_PLUGIN_SUPPORT from 1 to 0 for testing
-target_compile_definitions(raceboat PRIVATE PYTHON_PLUGIN_SUPPORT=0)
+# target_compile_definitions(raceboat PRIVATE PYTHON_PLUGIN_SUPPORT=0)
 
 
 #message(DEBUG "Printing Python include dirs: ${PYTHON_INCLUDE_PATH}")
@@ -153,14 +153,14 @@ target_compile_definitions(raceboat PRIVATE PYTHON_PLUGIN_SUPPORT=0)
 if(ANDROID)
     target_link_libraries(raceboat
         PRIVATE
-            language-shims-headers
-            ${PYTHON_LIBRARIES}
+            # language-shims-headers
+            # ${PYTHON_LIBRARIES}
             #${PYTHON_LIBRARY}
             ${CMAKE_DL_LIBS} # Contains dlopen and dlclose for dynamically loading plugins.
             log
     )
     #target_include_directories(raceboat SYSTEM PRIVATE ${PYTHON_INCLUDE_PATH})
-    target_include_directories(raceboat SYSTEM PRIVATE ${PYTHON_INCLUDE_DIRS})
+    # target_include_directories(raceboat SYSTEM PRIVATE ${PYTHON_INCLUDE_DIRS})
 
     #target_link_libraries(raceboat PRIVATE Python::Python)
     #target_link_libraries(raceboat PRIVATE ${PYTHON_LIBRARIES})
@@ -168,14 +168,14 @@ else()
     # Default to Linux
     target_link_libraries(raceboat
         PRIVATE
-            language-shims-headers
-            ${PYTHON_LIBRARIES}
+            # language-shims-headers
+            # ${PYTHON_LIBRARIES}
             #${PYTHON_LIBRARY}
             ${CMAKE_DL_LIBS} # Contains dlopen and dlclose for dynamically loading plugins.
         PUBLIC
             stdc++fs
     )
-    target_include_directories(raceboat SYSTEM PRIVATE ${PYTHON_INCLUDE_DIRS})
+    # target_include_directories(raceboat SYSTEM PRIVATE ${PYTHON_INCLUDE_DIRS})
 endif()
 
 # TODO enable performance-* and readability-* checks (needs fixes)

@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     static {
         System.loadLibrary("raceboat");
- //       System.loadLibrary("raceboat-driver");
+        System.loadLibrary("raceboat-driver");
     }
 
     private RaceboatClient raceboatClient;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId(this, "activity_main"));
 
-//        main();
+        main();
         raceboatClient = new RaceboatClient(this);
 
         messageEditText = findViewById(getId(this, "messageEditText", "id"));
