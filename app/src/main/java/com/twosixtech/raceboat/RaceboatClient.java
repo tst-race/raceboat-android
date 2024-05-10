@@ -5,6 +5,10 @@ import android.net.LocalSocket;
 import android.net.LocalSocketAddress;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
+
+import com.google.android.material.tabs.TabLayout;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -64,6 +68,7 @@ public class RaceboatClient {
     private LocalSocket createSocket() throws Exception {
         LocalSocket socket = new LocalSocket();
         LocalSocketAddress address = new LocalSocketAddress(context.getFilesDir().getPath() + "/Raceboat/raceboat_socket.sock", LocalSocketAddress.Namespace.FILESYSTEM);
+        Log.i("RaceboatClient", "createSocket: address: " + address.getName());
         socket.connect(address);
         return socket;
     }

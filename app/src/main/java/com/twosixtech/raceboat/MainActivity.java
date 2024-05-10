@@ -12,6 +12,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    public native int main();
+
+    static {
+        System.loadLibrary("raceboat");
+ //       System.loadLibrary("raceboat-driver");
+    }
+
     private RaceboatClient raceboatClient;
     private EditText messageEditText;
     private Spinner modeSpinner;
@@ -22,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId(this, "activity_main"));
 
+//        main();
         raceboatClient = new RaceboatClient(this);
 
         messageEditText = findViewById(getId(this, "messageEditText", "id"));

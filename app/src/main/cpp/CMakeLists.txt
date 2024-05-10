@@ -14,7 +14,7 @@
 # limitations under the License.
 # 
 
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.22.1)
 project(raceboat LANGUAGES CXX)
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v")
 
@@ -30,6 +30,10 @@ set(BUILD_VERSION "jigglypuff")
 if("${BUILD_VERSION}" STREQUAL "")
     message(FATAL_ERROR "Missing or empty BUILD_VERSION argument")
 endif()
+
+find_library( # Sets the name of the path variable.
+        log-lib
+        log )
 
 #include(race/clang-format)
 #include(race/coverage)
@@ -95,3 +99,14 @@ install(
 )
 #testing raceboat's  main()
 include(run_raceboat.cmake)
+#LOCAL_LDLIBS := -llog
+
+add_library(raceboat-driver SHARED
+        # List C/C++ source files with relative paths to this CMakeLists.txt.
+        mainDriver.cpp)
+
+target_link_libraries(raceboat-driver
+        raceboat
+        # List libraries link to the target library
+        android
+        log)

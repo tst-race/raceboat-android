@@ -1,23 +1,23 @@
 {
   "buildFiles": [
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/CMakeLists.txt",
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims/CMakeLists.txt",
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims/source/CMakeLists.txt",
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/run_raceboat.cmake",
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/CMakeLists.txt"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/CMakeLists.txt",
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/language-shims/CMakeLists.txt",
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/language-shims/source/CMakeLists.txt",
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/run_raceboat.cmake",
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/CMakeLists.txt"
   ],
   "cleanCommandsComponents": [
     [
-      "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "/Users/paul.vines/Library/Android/sdk/cmake/3.22.1/bin/ninja",
       "-C",
-      "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a",
+      "/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
-    "/Users/jesse.jenter/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "/Users/paul.vines/Library/Android/sdk/cmake/3.22.1/bin/ninja",
     "-C",
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a",
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a",
     "{LIST_OF_TARGETS_TO_BUILD}"
   ],
   "libraries": {
@@ -25,19 +25,19 @@
       "toolchain": "toolchain",
       "abi": "arm64-v8a",
       "artifactName": "commsPluginBindings",
-      "output": "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/_commsPluginBindings.so",
+      "output": "/Users/paul.vines/Development/race/code/raceboat-android/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/_commsPluginBindings.so",
       "runtimeFiles": [
-        "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so",
-        "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/libraceboat.so"
+        "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so",
+        "/Users/paul.vines/Development/race/code/raceboat-android/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/libraceboat.so"
       ]
     },
     "raceboat::@411ffd8adc737496fe19": {
       "toolchain": "toolchain",
       "abi": "arm64-v8a",
       "artifactName": "raceboat",
-      "output": "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/libraceboat.so",
+      "output": "/Users/paul.vines/Development/race/code/raceboat-android/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/libraceboat.so",
       "runtimeFiles": [
-        "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so"
+        "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/python/python-3.7.16-3-android-arm64-v8a/lib/libpython3.7m.so"
       ]
     },
     "run_raceboat::@6890427a1f51a3e7e1df": {
@@ -53,8 +53,8 @@
   },
   "toolchains": {
     "toolchain": {
-      "cCompilerExecutable": "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
-      "cppCompilerExecutable": "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+      "cCompilerExecutable": "/Users/paul.vines/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/paul.vines/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
     }
   },
   "cFileExtensions": [],

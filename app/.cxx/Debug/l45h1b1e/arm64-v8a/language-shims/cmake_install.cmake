@@ -1,4 +1,4 @@
-# Install script for directory: /Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/language-shims
+# Install script for directory: /Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/language-shims
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,12 +39,12 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objdump")
+  set(CMAKE_OBJDUMP "/Users/paul.vines/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/language-shims/source/cmake_install.cmake")
+  include("/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a/language-shims/source/cmake_install.cmake")
 
 endif()
 

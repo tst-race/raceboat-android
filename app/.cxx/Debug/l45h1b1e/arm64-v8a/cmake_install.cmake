@@ -1,4 +1,4 @@
-# Install script for directory: /Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp
+# Install script for directory: /Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objdump")
+  set(CMAKE_OBJDUMP "/Users/paul.vines/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-objdump")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -49,11 +49,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraceboat.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/libraceboat.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/Users/paul.vines/Development/race/code/raceboat-android/app/build/intermediates/cxx/Debug/l45h1b1e/obj/arm64-v8a/libraceboat.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraceboat.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraceboat.so")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/Users/jesse.jenter/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraceboat.so")
+      execute_process(COMMAND "/Users/paul.vines/Library/Android/sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraceboat.so")
     endif()
   endif()
 endif()
@@ -63,49 +63,49 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/ClrMsg.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/IRaceApp.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/MessageStatus.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/PluginStatus.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/Race.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/ChannelId.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/ChannelProperties.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/ChannelRole.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/ChannelStatus.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/ConnectionStatus.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/ConnectionType.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/Defer.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/EncPkg.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/LinkProperties.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/LinkPropertyPair.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/LinkPropertySet.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/LinkStatus.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/LinkType.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/PackageStatus.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/PackageType.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/PluginConfig.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/PluginResponse.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/RaceEnums.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/RaceExport.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/RaceHandle.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/RaceLog.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/RacePluginExports.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/SendType.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/TransmissionType.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/common/constants.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/ComponentTypes.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/IComponentBase.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/IComponentSdkBase.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/IEncodingComponent.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/IEncodingSdk.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/ITransportComponent.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/ITransportSdk.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/IUserModelComponent.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/decomposed/IUserModelSdk.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/unified/IRacePluginComms.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/unified/IRaceSdkCommon.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/unified/IRaceSdkComms.h"
-    "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/src/main/cpp/source/../include/race/unified/SdkResponse.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/ClrMsg.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/IRaceApp.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/MessageStatus.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/PluginStatus.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/Race.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/ChannelId.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/ChannelProperties.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/ChannelRole.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/ChannelStatus.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/ConnectionStatus.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/ConnectionType.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/Defer.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/EncPkg.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/LinkProperties.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/LinkPropertyPair.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/LinkPropertySet.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/LinkStatus.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/LinkType.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/PackageStatus.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/PackageType.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/PluginConfig.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/PluginResponse.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/RaceEnums.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/RaceExport.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/RaceHandle.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/RaceLog.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/RacePluginExports.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/SendType.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/TransmissionType.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/common/constants.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/ComponentTypes.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/IComponentBase.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/IComponentSdkBase.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/IEncodingComponent.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/IEncodingSdk.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/ITransportComponent.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/ITransportSdk.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/IUserModelComponent.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/decomposed/IUserModelSdk.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/unified/IRacePluginComms.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/unified/IRaceSdkCommon.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/unified/IRaceSdkComms.h"
+    "/Users/paul.vines/Development/race/code/raceboat-android/app/src/main/cpp/source/../include/race/unified/SdkResponse.h"
     )
 endif()
 
@@ -113,7 +113,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/raceboat.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/raceboat.cmake"
-         "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/CMakeFiles/Export/lib/cmake/raceboat.cmake")
+         "/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a/CMakeFiles/Export/lib/cmake/raceboat.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/raceboat-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -122,16 +122,16 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/CMakeFiles/Export/lib/cmake/raceboat.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a/CMakeFiles/Export/lib/cmake/raceboat.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/CMakeFiles/Export/lib/cmake/raceboat-debug.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake" TYPE FILE FILES "/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a/CMakeFiles/Export/lib/cmake/raceboat-debug.cmake")
   endif()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/language-shims/cmake_install.cmake")
-  include("/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/source/cmake_install.cmake")
+  include("/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a/language-shims/cmake_install.cmake")
+  include("/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a/source/cmake_install.cmake")
 
 endif()
 
@@ -143,5 +143,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/jesse.jenter/AndroidStudioProjects/Raceboat/app/.cxx/Debug/l45h1b1e/arm64-v8a/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/paul.vines/Development/race/code/raceboat-android/app/.cxx/Debug/l45h1b1e/arm64-v8a/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

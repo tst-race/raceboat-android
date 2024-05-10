@@ -29,6 +29,8 @@
 //cstdlib may not be needed
 #include "include/race/Race.h"
 #include "include/race/common/RaceLog.h"
+#include <android/log.h>
+#include <jni.h>
 
 using namespace Raceboat;
 
@@ -107,10 +109,12 @@ std::string receiveMessageFromJavaClient(int clientSocket) {
 }
 
 int createServerSocket(const std::string& socketPath) {
+    __android_log_print(ANDROID_LOG_ERROR, "MainDriver", "createServerSocket");
     int serverSocket = socket(AF_UNIX, SOCK_STREAM, 0);
     if (serverSocket == -1) {
         std::cerr << "Error creating server socket\n";
         return -1;
+
     }
 
     struct sockaddr_un address;
@@ -400,6 +404,29 @@ int handle_recv_respond(const RaceboatOptions &opts, int javaClientSocket) {
     return 0;
 }
 
+// Map enum values to string representations
+const std::unordered_map<ApiStatus, std::string> apiStatusToString = {
+        {ApiStatus::INVALID, "INVALID"},
+        {ApiStatus::OK, "OK"},
+        {ApiStatus::CLOSING, "CLOSING"},
+        {ApiStatus::CHANNEL_INVALID, "CHANNEL_INVALID"},
+        {ApiStatus::INVALID_ARGUMENT, "INVALID_ARGUMENT"},
+        {ApiStatus::PLUGIN_ERROR, "PLUGIN_ERROR"},
+        {ApiStatus::INTERNAL_ERROR, "INTERNAL_ERROR"}
+};
+
+
+//adding/removing this function adds/removes the duplicate function error when building
+// Function to convert ApiStatus enum to string
+std::string getApiStatusString(ApiStatus status) {
+    auto it = apiStatusToString.find(status);
+    if (it != apiStatusToString.end()) {
+        return it->second;
+    } else {
+        return "UNKNOWN_STATUS";
+    }
+}
+
 int handle_client_connect(const RaceboatOptions &opts, int javaClientSocket) {
     ChannelParamStore params = getParams(opts);
 
@@ -560,6 +587,7 @@ int handle_server_connect(const RaceboatOptions &opts, int javaClientSocket) {
 
 int main(){
 
+    __android_log_print(ANDROID_LOG_ERROR, "MainDriver", "main called");
     //might need to make some adjustments to return values so that failures and successes match what's expected
     auto opts = parseOpts();
     //artifact of optional type usage, removed currently
@@ -641,4 +669,10 @@ int main(){
     //otherwise keep looping waiting for a new connection
     close(serverSocket);
     return result;
+}
+
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_twosixtech_raceboat_MainActivity_main(JNIEnv *env, jobject thiz) {
+    return main();
 }

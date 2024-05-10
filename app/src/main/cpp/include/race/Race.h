@@ -42,28 +42,27 @@ enum class ApiStatus {
   INTERNAL_ERROR
 };
 
-// Map enum values to string representations
-const std::unordered_map<ApiStatus, std::string> apiStatusToString = {
-        {ApiStatus::INVALID, "INVALID"},
-        {ApiStatus::OK, "OK"},
-        {ApiStatus::CLOSING, "CLOSING"},
-        {ApiStatus::CHANNEL_INVALID, "CHANNEL_INVALID"},
-        {ApiStatus::INVALID_ARGUMENT, "INVALID_ARGUMENT"},
-        {ApiStatus::PLUGIN_ERROR, "PLUGIN_ERROR"},
-        {ApiStatus::INTERNAL_ERROR, "INTERNAL_ERROR"}
-};
+// // Map enum values to string representations
+// const std::unordered_map<ApiStatus, std::string> apiStatusToString = {
+//         {ApiStatus::INVALID, "INVALID"},
+//         {ApiStatus::OK, "OK"},
+//         {ApiStatus::CLOSING, "CLOSING"},
+//         {ApiStatus::CHANNEL_INVALID, "CHANNEL_INVALID"},
+//         {ApiStatus::INVALID_ARGUMENT, "INVALID_ARGUMENT"},
+//         {ApiStatus::PLUGIN_ERROR, "PLUGIN_ERROR"},
+//         {ApiStatus::INTERNAL_ERROR, "INTERNAL_ERROR"}
+// };
 
-
-//adding/removing this function adds/removes the duplicate function error when building
-// Function to convert ApiStatus enum to string
-std::string getApiStatusString(ApiStatus status) {
-    auto it = apiStatusToString.find(status);
-    if (it != apiStatusToString.end()) {
-        return it->second;
-    } else {
-        return "UNKNOWN_STATUS";
-    }
-}
+// //adding/removing this function adds/removes the duplicate function error when building
+// // Function to convert ApiStatus enum to string
+// std::string getApiStatusString(ApiStatus status) {
+//     auto it = apiStatusToString.find(status);
+//     if (it != apiStatusToString.end()) {
+//         return it->second;
+//     } else {
+//         return "UNKNOWN_STATUS";
+//     }
+// }
 
 struct ReceiveOptions {
 public:
