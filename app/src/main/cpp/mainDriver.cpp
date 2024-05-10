@@ -77,11 +77,20 @@ std::string getAppDataDir() {
 
 //these functions use std::cerr and std::cout to try to make android log/debugging easier
 std::vector<uint8_t> readSocketData(int socket) {
-    std::vector<uint8_t> buffer;
-    int data;
-    while (recv(socket, &data, sizeof(data), 0) > 0) {
-        buffer.push_back(data);
+    std::uint32_t length;
+    if (recv(socket, &length, sizeof(length), 0) < 0) {
+        __android_log_print(ANDROID_LOG_ERROR, "readSocketData", "failed to read length bytes");
     }
+
+    __android_log_print(ANDROID_LOG_DEBUG, "readSocketData", "read length %d", length);
+
+    std::vector<uint8_t> buffer(length);
+    if (recv(socket, buffer.data(), length, 0) < 0) {
+        __android_log_print(ANDROID_LOG_ERROR, "readSocketData", "failed to read length bytes");
+    }
+
+    __android_log_print(ANDROID_LOG_DEBUG, "readSocketData", "read data %d", buffer.size());
+
     return buffer;
 }
 
@@ -100,12 +109,8 @@ std::string receiveMessageFromJavaClient(int clientSocket) {
 int createServerSocket() {
     __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "createServerSocket");
     std::string socketPath = getAppDataDir() + "raceboat_socket.sock";
-    socketPath = "#/data/user/0/com.example.raceboat/files/Raceboat/raceboat_socket.sock";
     socketPath = "RaceboatLocalSocket";
-    int socket_fd;
-    struct sockaddr_un server_address, client_address;
-    int bytes_received, bytes_sent, integer_buffer;
-    socklen_t address_length = sizeof(server_address.sun_family)+strlen(socketPath.c_str() );
+    struct sockaddr_un server_address;
 
     int serverSocket = socket(PF_LOCAL, SOCK_STREAM, 0);
     if (serverSocket == -1) {
@@ -114,25 +119,10 @@ int createServerSocket() {
         return -1;
 
     }
-    //unsigned char *localSocketName = "MyTestSocket";
     memset(&server_address, 0, sizeof(server_address));
     server_address.sun_family = AF_LOCAL;
-    __android_log_print(ANDROID_LOG_ERROR, "MainDriver",
-                        "sizeof(sun_path) -2 = %d", sizeof(server_address.sun_path) - 2);
-
     strncpy(server_address.sun_path + 1, socketPath.c_str(), sizeof(server_address.sun_path) - 2);
-
-    __android_log_print(ANDROID_LOG_ERROR, "MainDriver",
-                        "server_address.sun_path + 1: %s", &server_address.sun_path[1]);
     int size = sizeof(server_address) - sizeof(server_address.sun_path) + strlen(server_address.sun_path+1) +1;
- //   memcpy(server_address.sun_path,
-  //         socketPath.c_str(),
-   //        sizeof(socketPath.c_str())-1);// the path is not a C string, and is not NULL turminated
-    //server_address.sun_path[0] = 0;
-
-    //the "\0" is an important prepend - prevents a bug that has to do with the differences between java and c++
-    //the prepend can also be done by the getSocketPath(), then pass that result into here
-    //strncpy(address.sun_path, ("\0" + socketPath).c_str(), sizeof(address.sun_path) - 1);
 
     __android_log_print(ANDROID_LOG_DEBUG, "createServerSocket", "address.sun_path %d %s %d",
                         sizeof(server_address.sun_path),
@@ -239,6 +229,7 @@ ChannelParamStore getParams(const RaceboatOptions &opts) {
 int handle_send_oneshot(const RaceboatOptions &opts, int javaClientSocket) {
     ChannelParamStore params = getParams(opts);
 
+    RaceLog::logDebug("RaceBoat", "RUNNING handle_send_oneshot", "");
     Race race(opts.plugin_path, params);
 
     SendOptions send_opt;
@@ -651,8 +642,11 @@ int main(){
 
         //check to see what mode the java client wants
         //Receive mode from the client
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "waiting to receive mode data");
         std::vector<uint8_t> modeData = readSocketData(clientSocket);
+
         std::string mode(modeData.begin(), modeData.end());
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "mode data %s", mode.c_str());
         std::cout << "Received mode from client: " << mode << std::endl;
 
         //hardcode the mode or let the simple android ui choose it

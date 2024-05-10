@@ -11,8 +11,11 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
 
 public class RaceboatClient {
     private LocalSocket clientSocket;
@@ -28,9 +31,11 @@ public class RaceboatClient {
         try {
             clientSocket = createSocket();
             // Send the mode to the server
+            Log.i("RaceboatClient", "Sending Mode " + mode);
             sendMessage(mode);
             // Start communication in a separate thread
-            startCommunicationThread();
+            //clientSocket.close();
+            //startCommunicationThread();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,6 +44,10 @@ public class RaceboatClient {
     public void sendMessage(String message) {
         try {
             OutputStream outputStream = clientSocket.getOutputStream();
+            ByteBuffer length = ByteBuffer.allocate(4);
+            length.order(ByteOrder.LITTLE_ENDIAN);
+            length.putInt(message.length());
+            outputStream.write(length.array());
             outputStream.write(message.getBytes());
             outputStream.flush();
         } catch (Exception e) {
