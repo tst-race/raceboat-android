@@ -101,36 +101,47 @@ int createServerSocket() {
     __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "createServerSocket");
     std::string socketPath = getAppDataDir() + "raceboat_socket.sock";
     socketPath = "#/data/user/0/com.example.raceboat/files/Raceboat/raceboat_socket.sock";
-    socketPath = "#RaceboatLocalSocket";
+    socketPath = "RaceboatLocalSocket";
     int socket_fd;
     struct sockaddr_un server_address, client_address;
     int bytes_received, bytes_sent, integer_buffer;
     socklen_t address_length = sizeof(server_address.sun_family)+strlen(socketPath.c_str() );
 
-    int serverSocket = socket(AF_UNIX, SOCK_STREAM, 0);
+    int serverSocket = socket(PF_LOCAL, SOCK_STREAM, 0);
     if (serverSocket == -1) {
         __android_log_print(ANDROID_LOG_ERROR, "MainDriver", "error creating socket %d", serverSocket);
         std::cerr << "Error creating server socket\n";
         return -1;
 
     }
-
+    //unsigned char *localSocketName = "MyTestSocket";
     memset(&server_address, 0, sizeof(server_address));
-    server_address.sun_family = AF_UNIX;
-    memcpy(server_address.sun_path, socketPath.c_str(),sizeof(socketPath.c_str())-1);// the path is not a C string, and is not NULL turminated
-    server_address.sun_path[0] = 0;
+    server_address.sun_family = AF_LOCAL;
+    __android_log_print(ANDROID_LOG_ERROR, "MainDriver",
+                        "sizeof(sun_path) -2 = %d", sizeof(server_address.sun_path) - 2);
+
+    strncpy(server_address.sun_path + 1, socketPath.c_str(), sizeof(server_address.sun_path) - 2);
+
+    __android_log_print(ANDROID_LOG_ERROR, "MainDriver",
+                        "server_address.sun_path + 1: %s", &server_address.sun_path[1]);
+    int size = sizeof(server_address) - sizeof(server_address.sun_path) + strlen(server_address.sun_path+1) +1;
+ //   memcpy(server_address.sun_path,
+  //         socketPath.c_str(),
+   //        sizeof(socketPath.c_str())-1);// the path is not a C string, and is not NULL turminated
+    //server_address.sun_path[0] = 0;
 
     //the "\0" is an important prepend - prevents a bug that has to do with the differences between java and c++
     //the prepend can also be done by the getSocketPath(), then pass that result into here
     //strncpy(address.sun_path, ("\0" + socketPath).c_str(), sizeof(address.sun_path) - 1);
 
-    __android_log_print(ANDROID_LOG_DEBUG, "creatServerSocket", "address.sun_path %d %s %d",
+    __android_log_print(ANDROID_LOG_DEBUG, "createServerSocket", "address.sun_path %d %s %d",
                         sizeof(server_address.sun_path),
                         &server_address.sun_path[1],
                         server_address.sun_path[0]);
 
-    if (bind(serverSocket, (struct sockaddr*)&server_address,
-            sizeof(server_address)) < 0) {
+    if (bind(serverSocket,
+             (struct sockaddr*)&server_address,
+             size) < 0) {
         std::cerr << "Error binding server socket\n";
         __android_log_print(ANDROID_LOG_ERROR, "createServerSocket", "error binding socket");
         close(serverSocket);
