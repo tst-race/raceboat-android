@@ -75,17 +75,6 @@ std::string getAppDataDir() {
     }
 }
 
-// Function to construct the socket path dynamically with optional '\0' prepending
-// currently, '\0' prepending is being done later, with the bind and corresponding size calculation
-std::string getSocketPath(bool prependNullByte = false) {
-    std::string path = getAppDataDir() + "raceboat_socket.sock";
-    if (prependNullByte) {
-        return "\0" + path;
-    } else {
-        return path;
-    }
-}
-
 //these functions use std::cerr and std::cout to try to make android log/debugging easier
 std::vector<uint8_t> readSocketData(int socket) {
     std::vector<uint8_t> buffer;
@@ -108,23 +97,42 @@ std::string receiveMessageFromJavaClient(int clientSocket) {
     return std::string(receivedData.begin(), receivedData.end());
 }
 
-int createServerSocket(const std::string& socketPath) {
-    __android_log_print(ANDROID_LOG_ERROR, "MainDriver", "createServerSocket");
+int createServerSocket() {
+    __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "createServerSocket");
+    std::string socketPath = getAppDataDir() + "raceboat_socket.sock";
+    socketPath = "#/data/user/0/com.example.raceboat/files/Raceboat/raceboat_socket.sock";
+    socketPath = "#RaceboatLocalSocket";
+    int socket_fd;
+    struct sockaddr_un server_address, client_address;
+    int bytes_received, bytes_sent, integer_buffer;
+    socklen_t address_length = sizeof(server_address.sun_family)+strlen(socketPath.c_str() );
+
     int serverSocket = socket(AF_UNIX, SOCK_STREAM, 0);
     if (serverSocket == -1) {
+        __android_log_print(ANDROID_LOG_ERROR, "MainDriver", "error creating socket %d", serverSocket);
         std::cerr << "Error creating server socket\n";
         return -1;
 
     }
 
-    struct sockaddr_un address;
-    address.sun_family = AF_UNIX;
+    memset(&server_address, 0, sizeof(server_address));
+    server_address.sun_family = AF_UNIX;
+    memcpy(server_address.sun_path, socketPath.c_str(),sizeof(socketPath.c_str())-1);// the path is not a C string, and is not NULL turminated
+    server_address.sun_path[0] = 0;
+
     //the "\0" is an important prepend - prevents a bug that has to do with the differences between java and c++
     //the prepend can also be done by the getSocketPath(), then pass that result into here
-    strncpy(address.sun_path, ("\0" + socketPath).c_str(), sizeof(address.sun_path) - 1);
+    //strncpy(address.sun_path, ("\0" + socketPath).c_str(), sizeof(address.sun_path) - 1);
 
-    if (bind(serverSocket, (struct sockaddr*)&address, sizeof(address)) == -1) {
+    __android_log_print(ANDROID_LOG_DEBUG, "creatServerSocket", "address.sun_path %d %s %d",
+                        sizeof(server_address.sun_path),
+                        &server_address.sun_path[1],
+                        server_address.sun_path[0]);
+
+    if (bind(serverSocket, (struct sockaddr*)&server_address,
+            sizeof(server_address)) < 0) {
         std::cerr << "Error binding server socket\n";
+        __android_log_print(ANDROID_LOG_ERROR, "createServerSocket", "error binding socket");
         close(serverSocket);
         return -1;
     }
@@ -134,6 +142,7 @@ int createServerSocket(const std::string& socketPath) {
         close(serverSocket);
         return -1;
     }
+    __android_log_print(ANDROID_LOG_ERROR, "createServerSocket", "LISTENING");
 
     return serverSocket;
 }
@@ -141,8 +150,14 @@ int createServerSocket(const std::string& socketPath) {
 int acceptClientConnection(int serverSocket) {
     struct sockaddr_un clientAddress;
     socklen_t clientAddressLength = sizeof(clientAddress);
-    int clientSocket = accept(serverSocket, (struct sockaddr*)&clientAddress, &clientAddressLength);
+    __android_log_print(ANDROID_LOG_ERROR,
+                        "acceptClientConnection", "attempting to accept");
+    int clientSocket = accept(serverSocket,
+                              (struct sockaddr*)&clientAddress,
+                              &clientAddressLength);
     if (clientSocket == -1) {
+        __android_log_print(ANDROID_LOG_ERROR,
+                            "acceptClientConnection", "error accepting client");
         std::cerr << "Error accepting client connection\n";
     }
     return clientSocket;
@@ -600,12 +615,8 @@ int main(){
     RaceLog::setLogLevel(opts->log_level);
     int result = -1;
 
-    //passing true to this getSocketPath() will also do the prepend "\0" bug fix
-    std::string socketPath = getSocketPath();
-    __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "socketPath %s",
-                        socketPath.c_str());
 
-    int serverSocket = createServerSocket(socketPath);
+    int serverSocket = createServerSocket();
     __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "socket %d", serverSocket);
     if (serverSocket == -1) {
         return 1;
@@ -618,6 +629,7 @@ int main(){
 
         int clientSocket = acceptClientConnection(serverSocket);
 
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "ACCEPT RETURNED!");
         //setup this way for initial socket testing
         //adjust this behavior once tested
         //to allow for repeated client connection without the server needing to be restarted
@@ -680,5 +692,11 @@ int main(){
 extern "C"
 JNIEXPORT jint JNICALL
 Java_com_twosixtech_raceboat_MainActivity_main(JNIEnv *env, jobject thiz) {
+    // TODO delete this function after java structure is finalized
+    return main();
+}
+extern "C"
+JNIEXPORT jint JNICALL
+Java_com_twosixtech_raceboat_RaceboatService_main(JNIEnv *env, jobject thiz) {
     return main();
 }

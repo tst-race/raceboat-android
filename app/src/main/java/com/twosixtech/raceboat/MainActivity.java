@@ -1,6 +1,7 @@
 package com.twosixtech.raceboat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,16 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    public native int main();
-
-    static {
-        System.loadLibrary("raceboat");
-        System.loadLibrary("raceboat-driver");
-    }
 
     private RaceboatClient raceboatClient;
     private EditText messageEditText;
@@ -30,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId(this, "activity_main"));
 
-        main();
+        Context context = getApplicationContext();
+        Intent intent = new Intent(this, RaceboatService.class);
+        context.startForegroundService(intent);
+
         raceboatClient = new RaceboatClient(this);
 
         messageEditText = findViewById(getId(this, "messageEditText", "id"));

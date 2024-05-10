@@ -66,8 +66,11 @@ public class RaceboatClient {
     }
 
     private LocalSocket createSocket() throws Exception {
-        LocalSocket socket = new LocalSocket();
-        LocalSocketAddress address = new LocalSocketAddress(context.getFilesDir().getPath() + "/Raceboat/raceboat_socket.sock", LocalSocketAddress.Namespace.FILESYSTEM);
+        LocalSocket socket = new LocalSocket(LocalSocket.SOCKET_STREAM);
+        LocalSocketAddress address = new LocalSocketAddress(
+                context.getFilesDir().getPath() + "/Raceboat/raceboat_socket.sock",
+                LocalSocketAddress.Namespace.ABSTRACT);
+        address = new LocalSocketAddress("RaceboatLocalSocket");
         Log.i("RaceboatClient", "createSocket: address: " + address.getName());
         socket.connect(address);
         return socket;
