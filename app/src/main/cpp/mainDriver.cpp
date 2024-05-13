@@ -170,7 +170,7 @@ struct RaceboatOptions {
     RaceLog::LogLevel log_level;
     std::vector<std::pair<std::string, std::string>> params;
 
-    std::string plugin_path = "/etc/race";
+    std::string plugin_path = "/data/data/com.example.raceboat/files/";
 
     ChannelId recv_channel;
     std::string recv_role = "default";
@@ -230,6 +230,8 @@ int handle_send_oneshot(const RaceboatOptions &opts, int javaClientSocket) {
     ChannelParamStore params = getParams(opts);
 
     RaceLog::logDebug("RaceBoat", "RUNNING handle_send_oneshot", "");
+    RaceLog::logDebug("RaceBoat", "plugin_path: " + opts.plugin_path, "");
+
     Race race(opts.plugin_path, params);
 
     SendOptions send_opt;
