@@ -24,9 +24,37 @@ public class RaceboatService extends Service {
     private NotificationManagerCompat notificationManager;
 
     public native int main();
+    private static final String[] NATIVE_LIBS = {
+//            "yaml-cpp",
+//            "stdc++",
+            "c++_shared",
+            "boost_system",
+            "boost_filesystem",
+            "ffi",
+            "python3.7m",
+            "crypto",
+            "ssl",
+            "thrift",
+            "zip",
+            "archive"
+    };
 
+
+    private static void loadNativeLibs() {
+        for (String lib : NATIVE_LIBS) {
+            try {
+                Log.v(TAG, "Loading " + lib);
+                System.loadLibrary(lib);
+                Log.d(TAG, "Loaded " + lib);
+            } catch (Error err) {
+                Log.e(TAG, "Error loading native lib " + lib, err);
+                throw err;
+            }
+        }
+    }
     static {
-        System.loadLibrary("raceboat");
+        loadNativeLibs();
+        System.loadLibrary("raceSdkCommon");
         System.loadLibrary("raceboat-driver");
     }
 

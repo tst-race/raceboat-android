@@ -15,7 +15,7 @@
 # 
 
 cmake_minimum_required(VERSION 3.22.1)
-project(raceboat LANGUAGES CXX)
+project(raceSdkCommon LANGUAGES CXX)
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -v")
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/race-cmake-modules)
@@ -87,17 +87,17 @@ add_subdirectory(source)
 
 install(
     TARGETS
-        raceboat
-    EXPORT raceboat
+        raceSdkCommon
+    EXPORT raceSdkCommon
     LIBRARY DESTINATION lib
     PUBLIC_HEADER DESTINATION include
 )
 
 install(
-    EXPORT raceboat
+    EXPORT raceSdkCommon
     DESTINATION lib/cmake
 )
-#testing raceboat's  main()
+#testing raceSdkCommon's  main()
 include(run_raceboat.cmake)
 #LOCAL_LDLIBS := -llog
 
@@ -106,7 +106,7 @@ add_library(raceboat-driver SHARED
         mainDriver.cpp)
 
 target_link_libraries(raceboat-driver
-        raceboat
+        raceSdkCommon
         # List libraries link to the target library
         android
         log)
