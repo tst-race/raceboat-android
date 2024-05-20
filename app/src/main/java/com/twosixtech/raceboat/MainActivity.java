@@ -16,8 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private RaceboatClient raceboatClient;
-    private EditText messageEditText;
+    private EditText messageEditText, sendChannel, sendAddress, recvChannel, recvAddress, additionalParameters;
     private Spinner modeSpinner;
+
     private TextView responseTextView;
 
     @Override
@@ -32,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
         raceboatClient = new RaceboatClient(this);
 
         messageEditText = findViewById(getId(this, "messageEditText", "id"));
+        sendChannel = findViewById(getId(this, "sendChannel", "id"));
+        sendAddress = findViewById(getId(this, "sendAddress", "id"));
+        recvChannel = findViewById(getId(this, "recvChannel", "id"));
+        recvAddress = findViewById(getId(this, "recvAddress", "id"));
+        additionalParameters = findViewById(getId(this, "additionalParameters", "id"));
         modeSpinner = findViewById(getId(this, "modeSpinner", "id"));
         responseTextView = findViewById(getId(this, "responseTextView", "id"));
 
@@ -45,9 +51,8 @@ public class MainActivity extends AppCompatActivity {
         modeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String mode = parent.getItemAtPosition(position).toString();
-                // Connect to the server with the selected mode
-                raceboatClient.connectToServer(mode);
+               // Connect to the server with the selected mode
+
             }
 
             @Override
@@ -61,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String mode = modeSpinner.getSelectedItem().toString();
+                raceboatClient.connectToServer(mode,
+                        sendChannel.getText().toString(),
+                        sendAddress.getText().toString(),
+                        recvChannel.getText().toString(),
+                        recvAddress.getText().toString(),
+                        additionalParameters.getText().toString());
+
                 String message = messageEditText.getText().toString();
                 // Send the message to the server
                 sendMessage(message);

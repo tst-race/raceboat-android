@@ -27,12 +27,22 @@ public class RaceboatClient {
         uiHandler = new Handler(Looper.getMainLooper());
     }
 
-    public void connectToServer(String mode) {
+    public void connectToServer(String mode, String sendChannel, String sendAddress, String recvChannel, String recvAddress, String additionalParameters) {
         try {
             clientSocket = createSocket();
             // Send the mode to the server
             Log.i("RaceboatClient", "Sending Mode " + mode);
             sendMessage(mode);
+            Log.i("RaceboatClient", "Sending next " + sendChannel);
+            sendMessage(sendChannel);
+            Log.i("RaceboatClient", "Sending next " + sendAddress);
+            sendMessage(sendAddress);
+            Log.i("RaceboatClient", "Sending next " + recvChannel);
+            sendMessage(recvChannel);
+            Log.i("RaceboatClient", "Sending next " + recvAddress);
+            sendMessage(recvAddress);
+            Log.i("RaceboatClient", "Sending next " + additionalParameters);
+            sendMessage(additionalParameters);
             // Start communication in a separate thread
             //clientSocket.close();
             //startCommunicationThread();

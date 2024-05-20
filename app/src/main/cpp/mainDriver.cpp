@@ -31,6 +31,7 @@
 #include "include/race/common/RaceLog.h"
 #include <android/log.h>
 #include <jni.h>
+#include <nlohmann/json.hpp>
 
 using namespace Raceboat;
 
@@ -48,12 +49,12 @@ enum class Mode : int {
 Mode stringToMode(const std::string& modeStr) {
     static const std::map<std::string, Mode> modeMap = {
             {"INVALID", Mode::INVALID},
-            {"SEND_ONESHOT", Mode::SEND_ONESHOT},
-            {"SEND_RECV", Mode::SEND_RECV},
-            {"CLIENT_CONNECT", Mode::CLIENT_CONNECT},
-            {"RECV_ONESHOT", Mode::RECV_ONESHOT},
-            {"RECV_RESPOND", Mode::RECV_RESPOND},
-            {"SERVER_CONNECT", Mode::SERVER_CONNECT}
+            {"Send Once", Mode::SEND_ONESHOT},
+            {"Request-Reply", Mode::SEND_RECV},
+            {"Connection", Mode::CLIENT_CONNECT},
+//            {"RECV_ONESHOT", Mode::RECV_ONESHOT},
+//            {"RECV_RESPOND", Mode::RECV_RESPOND},
+//            {"SERVER_CONNECT", Mode::SERVER_CONNECT}
     };
 
     auto it = modeMap.find(modeStr);
@@ -188,6 +189,9 @@ struct RaceboatOptions {
 
 //can possibly hardcode RaceBoatOptions
 //or create hardcoded object(s) that can be called by main or any other func to make testing easier
+static std::optional<RaceboatOptions> parseOptsFromFile(std::string configFilepath){
+    return {};
+}
 
 static std::optional<RaceboatOptions> parseOpts(){
     RaceboatOptions opts;
@@ -198,13 +202,13 @@ static std::optional<RaceboatOptions> parseOpts(){
     opts.mode = Mode::SEND_ONESHOT;
     //opts.mode = Mode::SEND_RECV;
     //set the send address
-    opts.send_address = "{\"hostname\":\"172.17.0.2\",\"port\":26262}";
+    opts.send_address = "{\"hostname\":\"10.0.2.2\",\"port\":26262}";
     //set the receive address
     //opts.recv_address =
 
     //how to hardcode params in
     //opts.params.push_back(std::make_pair("key1", "value1"));
-    opts.params.push_back(std::make_pair("hostname", "172.17.0.3"));
+    opts.params.push_back(std::make_pair("hostname", "127.0.0.1"));
     opts.params.push_back(std::make_pair("PluginCommsTwoSixStub.startPort", "26262"));
     opts.params.push_back(std::make_pair("PluginCommsTwoSixStub.endPort", "26264"));
 
@@ -604,12 +608,15 @@ int handle_server_connect(const RaceboatOptions &opts, int javaClientSocket) {
     return (status == ApiStatus::OK);
 }
 
-
-int main(){
+int runRaceboat(std::string configFilepath){
+    std::optional<RaceboatOptions> opts;
+    if (!configFilepath.empty()) {
+        opts = parseOptsFromFile(configFilepath);
+    }
 
     __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "MAIN CALLED");
     //might need to make some adjustments to return values so that failures and successes match what's expected
-    auto opts = parseOpts();
+    opts = parseOpts();
     //artifact of optional type usage, removed currently
     //if (!opts.has_value()) {
     //    return 1;
@@ -646,9 +653,24 @@ int main(){
         //Receive mode from the client
         __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "waiting to receive mode data");
         std::vector<uint8_t> modeData = readSocketData(clientSocket);
+        std::vector<uint8_t> sendChannelData =readSocketData(clientSocket);
+        std::vector<uint8_t> sendAddrData =readSocketData(clientSocket);
+        std::vector<uint8_t> recvChannelData =readSocketData(clientSocket);
+        std::vector<uint8_t> recvAddrData =readSocketData(clientSocket);
+        std::vector<uint8_t> parametersData =readSocketData(clientSocket);
 
         std::string mode(modeData.begin(), modeData.end());
+        std::string sendChannel(sendChannelData.begin(), sendChannelData.end());
+        std::string sendAddr(sendAddrData.begin(), sendAddrData.end());
+        std::string recvChannel(recvChannelData.begin(), recvChannelData.end());
+        std::string recvAddr(recvAddrData.begin(), recvAddrData.end());
+        std::string parameters(parametersData.begin(), parametersData.end());
         __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "mode data %s", mode.c_str());
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "sendChannel data %s", sendChannel.c_str());
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "sendAddr data %s", sendAddr.c_str());
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "recvChannel data %s", recvChannel.c_str());
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "recvAddr data %s", recvAddr.c_str());
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "parameters data %s", parameters.c_str());
         std::cout << "Received mode from client: " << mode << std::endl;
 
         //hardcode the mode or let the simple android ui choose it
@@ -659,7 +681,28 @@ int main(){
             opts->mode = Mode::SEND_ONESHOT;
         }
 
+        if (!sendChannel.empty()) {
+            opts->send_channel = sendChannel;
+        }
+        if (!sendAddr.empty()) {
+            opts->send_address = sendAddr;
+        }
+        if (!recvChannel.empty()) {
+            opts->recv_channel = recvChannel;
+        }
+        if (!recvAddr.empty()) {
+            opts->recv_address = recvAddr;
+        }
+        if (!parameters.empty()) {
+            nlohmann::json jsonParams = nlohmann::json::parse(parameters);
+            for (auto &kv: jsonParams.items()) {
+                __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "parame: %s", kv.key().c_str());
+                opts->params.push_back(std::make_pair(kv.key(), kv.value()));
+            }
+        }
 
+
+        __android_log_print(ANDROID_LOG_DEBUG, "MainDriver", "send_address %s", opts->send_address.c_str());
         //switch into wanted mode and use the socket to get other necessary info from the java layer
         switch (opts->mode) {
             case Mode::SEND_ONESHOT:
@@ -696,14 +739,18 @@ int main(){
     return result;
 }
 
+int runRaceboat() {
+    return runRaceboat("");
+}
+
 extern "C"
 JNIEXPORT jint JNICALL
 Java_com_twosixtech_raceboat_MainActivity_main(JNIEnv *env, jobject thiz) {
     // TODO delete this function after java structure is finalized
-    return main();
+    return runRaceboat();
 }
 extern "C"
 JNIEXPORT jint JNICALL
 Java_com_twosixtech_raceboat_RaceboatService_main(JNIEnv *env, jobject thiz) {
-    return main();
+    return runRaceboat();
 }

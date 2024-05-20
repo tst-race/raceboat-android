@@ -19,7 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Raceboat"
-        tools:targetApi="33">
+        tools:targetApi="34">
         <service
             android:name="com.twosixtech.raceboat.RaceboatService"
             android:enabled="true"
