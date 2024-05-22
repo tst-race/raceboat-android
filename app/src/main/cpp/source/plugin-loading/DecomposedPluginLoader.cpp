@@ -19,6 +19,7 @@
 #include "CompositeWrapper.h"
 #include "Core.h"
 #include "decomposed/ComponentManager.h"
+#include "PythonComponentPlugin.h"
 #include "helper.h"
 
 namespace Raceboat {

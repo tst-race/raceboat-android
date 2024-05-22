@@ -56,9 +56,9 @@ add_library(raceSdkCommon SHARED
     plugin-loading/DynamicLibrary.cpp
     plugin-loading/LoaderWrapper.cpp
     plugin-loading/PluginLoader.cpp
-    # plugin-loading/PythonHelper.cpp
-    # plugin-loading/PythonComponentPlugin.cpp
-    # plugin-loading/PythonLoaderWrapper.cpp
+    plugin-loading/PythonHelper.cpp
+    plugin-loading/PythonComponentPlugin.cpp
+    plugin-loading/PythonLoaderWrapper.cpp
     state-machine/ApiContext.cpp
     state-machine/ConnectionObjectStateMachine.cpp
     state-machine/ConnectionStateMachine.cpp
@@ -94,8 +94,10 @@ set_target_properties(raceSdkCommon PROPERTIES
     PUBLIC_HEADER "${COMM_LIB_PUBLIC_HEADERS}"
 )
 target_include_directories(raceSdkCommon PUBLIC
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include/python3.7m>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../jniLibs/arm64-v8a/python3.7m>
         # $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include/python3.7m>
         $<INSTALL_INTERFACE:include>
 )
@@ -137,7 +139,7 @@ target_compile_definitions(raceSdkCommon PUBLIC SWIG_TYPE_TABLE=RaceSdk)
 # Set the path to Python executable directory
 #set(PYTHON_EXECUTABLE ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/bin/python3.7m)
 
-#find_package(PythonLibs 3.7 EXACT REQUIRED)
+find_package(PythonLibs 3.7 EXACT REQUIRED)
 # Set the path to Python libraries directory relative to the source directory
 #set(PYTHON_LIBRARIES_PATH ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib)
 
@@ -145,7 +147,7 @@ target_compile_definitions(raceSdkCommon PUBLIC SWIG_TYPE_TABLE=RaceSdk)
 #target_link_libraries(raceSdkCommon ${PYTHON_LIBRARIES_PATH})
 
 #changing the PYTHON_PLUGIN_SUPPORT from 1 to 0 for testing
-# target_compile_definitions(raceSdkCommon PRIVATE PYTHON_PLUGIN_SUPPORT=0)
+target_compile_definitions(raceSdkCommon PRIVATE PYTHON_PLUGIN_SUPPORT=1)
 
 
 #message(DEBUG "Printing Python include dirs: ${PYTHON_INCLUDE_PATH}")
@@ -153,13 +155,13 @@ target_compile_definitions(raceSdkCommon PUBLIC SWIG_TYPE_TABLE=RaceSdk)
 if(ANDROID)
     target_link_libraries(raceSdkCommon
         PRIVATE
-            # language-shims-headers
-            # ${PYTHON_LIBRARIES}
-            #${PYTHON_LIBRARY}
+            language-shims-headers
+            ${PYTHON_LIBRARIES}
+            # ${PYTHON_LIBRARY}
             ${CMAKE_DL_LIBS} # Contains dlopen and dlclose for dynamically loading plugins.
             log
     )
-    #target_include_directories(raceSdkCommon SYSTEM PRIVATE ${PYTHON_INCLUDE_PATH})
+    target_include_directories(raceSdkCommon SYSTEM PRIVATE ${PYTHON_INCLUDE_PATH})
     # target_include_directories(raceSdkCommon SYSTEM PRIVATE ${PYTHON_INCLUDE_DIRS})
 
     #target_link_libraries(raceSdkCommon PRIVATE Python::Python)

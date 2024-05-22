@@ -21,9 +21,7 @@
 
 cmake_policy(SET CMP0078 NEW)
 cmake_policy(SET CMP0086 NEW)
-#might need to change these policies
-#will need to remove the find package for go
-#find_package(SWIG REQUIRED COMPONENTS go python)
+# find_package(SWIG REQUIRED COMPONENTS go python)
 find_package(SWIG REQUIRED COMPONENTS python)
 set(UseSWIG_MODULE_VERSION 2)
 include(${SWIG_USE_FILE})
@@ -35,14 +33,21 @@ if(ANDROID)
     set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--warn-unresolved-symbols ${CMAKE_SHARED_LINKER_FLAGS}")
 endif()
 
+find_package(PythonLibs 3.7 EXACT REQUIRED)
+
+set(CMAKE_SWIG_FLAGS "-DSWIGWORDSIZE64")
+set(SWIG_COMPILE_FLAGS "${SWIG_COMPILE_FLAGS} -DSWIG_TYPE_TABLE=RaceSdk")
+
 # Include the directory containing the raceboat target
-#add_subdirectory(${CMAKE_SOURCE_DIR})
+# add_subdirectory(${CMAKE_SOURCE_DIR})
 #may need to do what was done in cpp/source/cMakeLists.txt
 # Set the path to Python include directory
 #set(PYTHON_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include)
+ set(PYTHON_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/../jniLibs/python3.7m)
 
 # Set the path to Python library
 #set(PYTHON_LIBRARY ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib)
+set(PYTHON_LIBRARY ${CMAKE_SOURCE_DIR}/../jniLibs/arm64-v8a/libpython3.7m.so)
 
 # Include PythonLibs
 #include_directories(${PYTHON_INCLUDE_DIRS})
@@ -51,6 +56,11 @@ endif()
 #include_directories(PYTHON_INCLUDE_DIRS)
 
 #set(PYTHON_EXECUTABLE ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/bin/python3)
+set(PYTHON_EXECUTABLE ${CMAKE_SOURCE_DIR}/../jniLibs/arm64-v8a/python3.7m)
+
+set(PYTHON_PACKAGES_DIR "${CMAKE_SOURCE_DIR}/../jniLibs/arm64-v8a/python3.7")
+set(PYTHONPATH "${PYTHON_PACKAGES_DIR}:${PYTHONPATH}")
+
 
 # Print a message to indicate that the directories are being checked
 message(STATUS "In language-shims/source/cmakeLists")
@@ -67,7 +77,7 @@ message(STATUS "CMAKE prefix path is: ${CMAKE_PREFIX_PATH}")
 #link_directories(${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib)
 
 # Call find_package
-#find_package(PythonLibs 3.7 EXACT REQUIRED)
+find_package(PythonLibs 3.7 EXACT REQUIRED)
 
 # Set the path to Python libraries directory relative to the source directory
 #set(PYTHON_LIBRARIES_PATH ${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/lib)
@@ -83,6 +93,7 @@ set(SWIG_COMPILE_FLAGS "${SWIG_COMPILE_FLAGS} -DSWIG_TYPE_TABLE=RaceSdk")
 # Shims headers
 ################################################################################
 
+message(STATUS "PYRUN header path: ${CMAKE_CURRENT_BINARY_DIR}/include/swigpyrun.h")
 set(SWIG_PYRUN_HEADER ${CMAKE_CURRENT_BINARY_DIR}/include/swigpyrun.h)
 
 set(NETWORK_MANAGER_PY_HEADER ${CMAKE_CURRENT_BINARY_DIR}/include/networkManagerPluginBindingsPYTHON_wrap.h)
@@ -106,15 +117,18 @@ add_library(language-shims-headers INTERFACE)
 add_dependencies(language-shims-headers swigpyrunHeader)
 # Specify these headers as SYSTEM headers so they don't generate warnings in consuming targets
 target_include_directories(language-shims-headers SYSTEM INTERFACE
+  ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/include/python3.7m
   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
+
 
 #set_target_properties(language-shims-headers PROPERTIES
 #  PUBLIC_HEADER "${SWIG_PYRUN_HEADER};${NETWORK_MANAGER_PY_HEADER};${COMMS_PY_HEADER};${COMMS_GO_HEADER}"
 #)
 set_target_properties(language-shims-headers PROPERTIES
-        PUBLIC_HEADER "${SWIG_PYRUN_HEADER};${NETWORK_MANAGER_PY_HEADER};${COMMS_PY_HEADER}"
+        PUBLIC_HEADER "${SWIG_PYRUN_HEADER};${COMMS_PY_HEADER}"
 )
 # ################################################################################
 # # Python Comms
@@ -126,7 +140,7 @@ swig_add_library(commsPluginBindings TYPE SHARED
   SOURCES commsPluginBindings.i
   OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/"
 )
-add_dependencies(commsPluginBindings raceboat)
+add_dependencies(commsPluginBindings raceSdkCommon)
 target_compile_definitions(commsPluginBindings PUBLIC "SWIG_TYPE_TABLE=RaceSdk")
 set_target_properties(commsPluginBindings PROPERTIES
   SWIG_USE_TARGET_INCLUDE_DIRECTORIES TRUE
@@ -134,7 +148,7 @@ set_target_properties(commsPluginBindings PROPERTIES
 )
 target_include_directories(commsPluginBindings PUBLIC ${PYTHON_INCLUDE_PATH})
 target_link_options(commsPluginBindings PUBLIC -Wl,--no-undefined)
-swig_link_libraries(commsPluginBindings ${PYTHON_LIBRARIES} language-shims-headers raceboat)
+swig_link_libraries(commsPluginBindings ${PYTHON_LIBRARIES} language-shims-headers raceSdkCommon)
 
 
 # ################################################################################
