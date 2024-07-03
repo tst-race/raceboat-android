@@ -24,16 +24,26 @@ bool initPython(std::string pythonHome, std::string pluginPath,
                 std::string shimsPath) {
   TRACE_FUNCTION(pythonHome, pluginPath, shimsPath);
   static bool called = false;
+  helper::logInfo(logPrefix +
+                  "Called?");
   if (!called) {
+    helper::logInfo(logPrefix +
+                  "Not Called.");
     called = true;
     if (!pythonHome.empty()) {
       std::wstring widePythonHome(pythonHome.begin(), pythonHome.end());
       Py_SetPythonHome(widePythonHome.c_str());
     }
+    helper::logInfo(logPrefix +
+                  "Calling Py_Initialize()");
     Py_Initialize();
 
+    helper::logInfo(logPrefix +
+                  "Called  Py_Initialize()");
     PyObject *sys = PyImport_ImportModule("sys");
     PyObject *path = PyObject_GetAttrString(sys, "path");
+    helper::logInfo(logPrefix +
+                  "Got sys and path");
     PyList_Append(path, PyUnicode_FromString(pluginPath.c_str()));
     PyList_Append(path, PyUnicode_FromString(shimsPath.c_str()));
 

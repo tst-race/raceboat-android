@@ -133,7 +133,7 @@ PythonLoaderWrapper::PythonLoaderWrapper(PluginContainer &container, Core &core,
     : PluginWrapper(container) {
   // TODO: fix python path on android?
   static bool pythonInitialized =
-      initPython("", core.getFS().makePluginInstallBasePath().string(),
+      initPython("/data/data/com.example.raceboat/python3.7/", core.getFS().makePluginInstallBasePath().string(),
                  core.getFS().makeShimsPath("python").string());
   TRACE_METHOD(pythonInitialized);
   this->mPlugin = createPythonPluginSharedPtr(this->getSdk(), pluginDef);

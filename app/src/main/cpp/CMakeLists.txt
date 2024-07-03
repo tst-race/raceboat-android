@@ -89,6 +89,21 @@ add_subdirectory(source)
 # Create this after all subdirectories have been added
 #setup_project_coverage_target()
 
+# Copied from racelient-android
+if (TARGET commsPluginBindings)
+	get_target_property(RACE_COMMS_PYTHON_SHIMS_BINARY_DIR commsPluginBindings BINARY_DIR)
+	set(RACE_COMMS_PYTHON_SHIMS_INCLUDE_DIR ${RACE_COMMS_PYTHON_SHIMS_BINARY_DIR}/include)
+else()
+	set(RACE_COMMS_PYTHON_SHIMS_BINARY_DIR ${CMAKE_INSTALL_PREFIX}/lib/race/python)
+	set(RACE_COMMS_PYTHON_SHIMS_INCLUDE_DIR ${RACE_COMMS_PYTHON_SHIMS_BINARY_DIR})
+endif()
+set(RACE_COMMS_PYTHON_SHIMS ${RACE_COMMS_PYTHON_SHIMS_BINARY_DIR}/_commsPluginBindings.so ${RACE_COMMS_PYTHON_SHIMS_INCLUDE_DIR}/commsPluginBindings.py)
+set(RACE_COMMS_COPY_PYTHON_COMMAND COMMAND cp -f ${RACE_COMMS_PYTHON_SHIMS} app/src/main/assets/race/python/)
+# End copy
+# add_custom_command(
+# 	${RACE_COMMS_COPY_PYTHON_COMMAND}
+# )
+
 install(
     TARGETS
         raceSdkCommon
