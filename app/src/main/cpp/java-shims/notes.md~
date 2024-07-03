@@ -1,0 +1,51 @@
+
+# Table of Contents
+
+1.  [java-shims/ShimsJava/src/main/java/ShimsJava:](#org2c15b02)
+2.  [java-shims/ShimsCpp/include](#org611b69f)
+3.  [java-shims/ShimsCpp/source](#org5a9f8d3)
+
+
+<a id="org2c15b02"></a>
+
+# java-shims/ShimsJava/src/main/java/ShimsJava:
+
+1.  RaceApp.java
+    -   Implements common/include/IRaceApp.h
+2.  Based on IRaceApp.h #include's:
+    -   JClrMsg.java
+    -   MessageStatus.java
+    -   PluginStatus.java
+    -   SdkResponse.java
+    -   RaceEnums.java?!? Doesn't exist!
+        -   common/include/RaceEnums.java defines a bunch of enums, e.g. NodeType
+        -   Search for NodeType in ShimsJava, see there is now a separate NodeType.java
+        -   All the enums have been broken out into their own .java files, likely due to Java idiosyncracies
+        -   NodeType.java, BootstrapActionType.java, StorageEncryptionType.java, UserDisplayType.java
+3.  RaceSdkApp.java
+    -   Implements common/include/IRaceSdkApp.h
+4.  Based on IRaceSdkApp.h #include's:
+    -   AppConfig.java
+    -   DeviceInfo.java
+5.  Helpers.java sounds suspiciousy necessary, but doesn't look like anything we need inside
+
+
+<a id="org611b69f"></a>
+
+# java-shims/ShimsCpp/include
+
+1.  JavaShimUtils.h
+2.  RaceAppWrapper.h
+
+
+<a id="org5a9f8d3"></a>
+
+# java-shims/ShimsCpp/source
+
+1.  ShimsJava<sub>AppConfig.cpp</sub> (since we have AppConfig.java)
+2.  JavaShimUtils.cpp
+3.  RaceAppWrapper.cpp
+4.  JavaIds.h (because it's #include from RaceAppWrapper.cpp)
+5.  ShimsJava<sub>RaceApp.cpp</sub>
+6.  ShimsJava<sub>RaceSdkApp.cpp</sub>
+
