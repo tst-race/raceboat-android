@@ -739,7 +739,45 @@ int runRaceboat(std::string configFilepath){
     return result;
 }
 
+static int pipeFds[2];
+static pthread_t stdioRedirectThread;
+
+static void *stdioRedirectFunc(void*)
+{
+    size_t readSize;
+    char buf[128];
+    while ((readSize = read(pipeFds[0], buf, sizeof buf - 1)) > 0) {
+        if (buf[readSize - 1] == '\n') {
+            --readSize;
+        }
+        buf[readSize] = 0; // add null-terminator
+        __android_log_write(ANDROID_LOG_ERROR, "stdio", buf);
+    }
+    return 0;
+}
+
+void redirectStdio(bool redirOut = false, bool redirErr = true) {
+    pipe(pipeFds);
+
+    if (redirOut) {
+        setvbuf(stdout, 0, _IOLBF, 0); // line-buffered
+        dup2(pipeFds[1], 1);
+    }
+
+    if (redirErr) {
+        setvbuf(stderr, 0, _IONBF, 0); // unbuffered
+        dup2(pipeFds[1], 2);
+    }
+
+    if (pthread_create(&stdioRedirectThread, 0, stdioRedirectFunc, 0) == -1) {
+        __android_log_write(ANDROID_LOG_ERROR, "MainDriver", "Error creating stdio redirect thread");
+        return;
+    }
+    pthread_detach(stdioRedirectThread);
+}
+
 int runRaceboat() {
+    redirectStdio();
     return runRaceboat("");
 }
 
