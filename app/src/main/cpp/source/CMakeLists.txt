@@ -98,7 +98,7 @@ target_include_directories(raceSdkCommon PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../jniLibs/arm64-v8a/python3.7m>
-        # $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include/python3.7m>
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/../python/python-3.7.16-3-android-arm64-v8a/include/python3.7m>
         $<INSTALL_INTERFACE:include>
 )
 
